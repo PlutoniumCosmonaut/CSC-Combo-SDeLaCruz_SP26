@@ -5,7 +5,7 @@ public class driver {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 
-		String word = word.toUpperCase();
+		String word;
 		int intNum;
 		float realNum = 987654321.987654321f;
 		double biggerRealNum;
@@ -13,6 +13,7 @@ public class driver {
 
 		System.out.println("Enter multiple words");
 		word = input.nextLine();
+		word = word.toUpperCase();
 		System.out.println(word);
 
 		System.out.println("Enter a num");
