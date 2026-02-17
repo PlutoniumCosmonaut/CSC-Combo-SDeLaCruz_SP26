@@ -50,5 +50,15 @@ public class Loopss {
 			}
 			System.out.println();
 		}
+		
+		System.out.println("Roman Alphabet: ");
+		for(char c = 'A';c <= 'z'; c++)
+		{
+			System.out.print(c);
+		}
+		System.out.println("Greek Alphabet: ");
+		for (int i = 913; i <= 937; i++) {
+			System.out.print((char) i);
+		}
 	}
 }
