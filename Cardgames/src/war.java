@@ -2,57 +2,36 @@
 public class war {
 
 	public static void main(String[] args) {
-		Card[] cards = new Card[52];
-		buildDeck(cards);
-		Card target = new Card(10, 2);
-		// System.out.println(cards[20]);
-		// printDeck(cards);
-		search(cards, target);
-		System.out.println(target + " is the " + search(cards, target) + " card in the deck");
-		int binIndex = binSearch(cards, target);
-	}
+		Deck deck = new Deck();
+		deck.shuffle();
+		
+		Pile p1 = new Pile();
+		p1.addDeck(deck.subdeck(0, 5));
+		p1.pilePrint();
+		System.out.println("***************************");
+		Pile p2 = new Pile();
+		p2.addDeck(deck.subdeck(31, 36));
+		p2.pilePrint();
+		
+		while (!p1.isEmpty() && !p2.isEmpty()) {
+			Card c1 = p1.pop();
+			Card c2 = p2.pop();
 
-	private static int binSearch(Card[] cards, Card target) {
-		int low = 0;
-		int high = cards.length - 1;
-		while (low <= high) {
-			int mid = (low + high) / 2;
-			int comp = cards[mid].compareTo(target);
-			if (comp == 0)
-				return mid;
-			else if (comp > 0)
-				low = mid + 1;
-			else high = mid - 1;
-		}
-		return 0;
-	}
+			int diff = c1.getRank() - c2.getRank();
+			if (diff > 0) {
+				p1.add(c1);
+				p1.add(c2);
+			} else if (diff < 0) {
+				p2.add(c1);
+				p2.add(c2);
+			} else {
 
-	private static int search(Card[] cards, Card target) {
-		for (int i = 0; i < cards.length; i++) {
-			if (cards[i].equals(target)) {
-				return i;
 			}
 		}
 
-		return -1;
+		if (p2.isEmpty())
+			System.out.println("Player 1 is the winner");
+		else
+			System.out.println("Player 2 is the winner");
 	}
-
-	private static void printDeck(Card[] cards) {
-		for (Card card : cards) {
-			System.out.println(card);
-		}
-
-	}
-
-	private static void buildDeck(Card[] cards) {
-		int index = 0;
-		for (int suit = 0; suit < 4; suit++) {
-			for (int rank = 1; rank <= 13; rank++) {
-				cards[index] = new Card(rank, suit);
-				index++;
-			}
-		}
-
-	}
-
 }
