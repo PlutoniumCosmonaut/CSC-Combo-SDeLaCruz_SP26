@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-
+import java.util.Collections;
 public class Pile {
 	private ArrayList<Card> cards;
 
@@ -29,5 +29,17 @@ public class Pile {
 		for (Card card : this.cards) {
 			System.out.println(card);
 		}
+	}
+	
+	public void addPile(Pile that)
+	{
+		while(!that.isEmpty()) {
+			this.add(that.pop());
+		}
+	}
+	
+	public void shufflePile()
+	{
+		Collections.shuffle(cards);
 	}
 }

@@ -13,20 +13,32 @@ public class war {
 		p2.addDeck(deck.subdeck(31, 36));
 		p2.pilePrint();
 		
+		Pile mid = new Pile();
+		
+		
+		
 		while (!p1.isEmpty() && !p2.isEmpty()) {
 			Card c1 = p1.pop();
 			Card c2 = p2.pop();
+			
+			mid.add(c1);
+			mid.add(c2);
 
 			int diff = c1.getRank() - c2.getRank();
 			if (diff > 0) {
-				p1.add(c1);
-				p1.add(c2);
+				p1.addPile(mid);
 			} else if (diff < 0) {
-				p2.add(c1);
-				p2.add(c2);
+				p2.addPile(mid);
 			} else {
+				for(int i = 0; i < 3; i++)
+				{
+					if(!p1.isEmpty())mid.add(p1.pop());
+					if(!p2.isEmpty())mid.add(p2.pop());
+				}
 
 			}
+			if(!p1.isEmpty())p1.shufflePile();
+			if(!p1.isEmpty())p2.shufflePile();
 		}
 
 		if (p2.isEmpty())
