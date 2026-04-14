@@ -1,7 +1,7 @@
 
 public class InPersonCourse extends Course {
 
-	String roomnum;
+	private String roomnum;
 
 	public InPersonCourse() {
 		super();
@@ -25,8 +25,8 @@ public class InPersonCourse extends Course {
 
 	@Override
 	public String toString() {
-		return "InPersonCourse" + "\ncoursenum: " + coursenum + "\nnumStudents: " + numStudents
-				+ "\nmaxStudents: " + maxStudents + "\ncredits: " + credits +  "\nroomnum: " + roomnum;
+		return "InPersonCourse" + "\ncoursenum: " + super.getStr() + "\nnumStudents: " + super.getNumStudents()
+				+ "\nmaxStudents: " + super.getMaxStudents() + "\ncredits: " + super.getCredits() +  "\nroomnum: " + roomnum;
 	}
 
 	

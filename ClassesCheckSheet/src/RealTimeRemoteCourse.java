@@ -1,7 +1,7 @@
 
 public class RealTimeRemoteCourse extends OnlineCourse {
 
-	String zoom;
+	private String zoom;
 
 	public RealTimeRemoteCourse() {
 		super();
@@ -25,8 +25,8 @@ public class RealTimeRemoteCourse extends OnlineCourse {
 
 	@Override
 	public String toString() {
-		return "RealTimeRemoteCourse" + "\ncoursenum: " + coursenum + "\nnumStudents: " + numStudents
-				+ "\nmaxStudents: " + maxStudents + "\ncredits: " + credits + "\nzoom: " + zoom;
+		return "RealTimeRemoteCourse" + "\ncoursenum: " + super.getStr() + "\nnumStudents: " + super.getNumStudents()
+				+ "\nmaxStudents: " + super.getMaxStudents() + "\ncredits: " + super.getCredits() + "\nzoom: " + zoom;
 	}
 	
 	

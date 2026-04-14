@@ -1,10 +1,10 @@
 
 public class Course {
 
-	String coursenum = "CSC119";
-	int numStudents = 0;
-	int maxStudents = 0;
-	int credits = 0;
+	private String coursenum = "CSC119";
+	private int numStudents = 0;
+	private int maxStudents = 0;
+	private int credits = 0;
 
 	public Course() {
 		super();
