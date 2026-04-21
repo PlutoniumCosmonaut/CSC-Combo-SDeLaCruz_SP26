@@ -39,5 +39,32 @@ public class CSclasses {
 			another = input.next();
 			another = another.toLowerCase();
 		}
+	
+	for(Course course1: courseList)
+	{
+		print(course1);
+	}
+}
+	public static void print(Course course)
+	{
+		 System.out.println(course);
+	}
+	public static void getPrinter(Course course) {
+		System.out.println("Course:" + course.getStr());
+		System.out.println("Number of students:" + course.getNumStudents());
+		System.out.println("Max students:" + course.getMaxStudents());
+		System.out.println("Credits:" + course.getCredits());
+		if(course instanceof InPersonCourse){
+			InPersonCourse IPcourse = (InPersonCourse)course;
+			System.out.println("Room:" + IPcourse.getRoomnum());
+		}
+		else if(course instanceof FullRemoteCourse){
+			FullRemoteCourse FMcourse = (FullRemoteCourse)course;
+			System.out.println("Email:" + FMcourse.getEmail());
+		}
+		else if(course instanceof RealTimeRemoteCourse){
+			RealTimeRemoteCourse RTRcourse = (RealTimeRemoteCourse)course;
+			System.out.println("Zoom:" + RTRcourse.getZoom());
+		}
 	}
 }
