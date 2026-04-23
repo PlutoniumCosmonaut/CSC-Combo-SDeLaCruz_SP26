@@ -1,6 +1,18 @@
 
 import java.util.Scanner;
-
+/**
+ * 
+ * 
+ * 
+ *	this is a tic tac toe game. it will need a player variable and a board
+ *	the player variable will be an int that alternates between 1 and 2
+ *	the board will be an array of chars
+ * 	@author Sydney
+ *  @since 4/22/26
+ * 
+ * 
+ * 
+ */
 public class ttt {
 
 	public static void main(String[] args) {
@@ -22,6 +34,15 @@ public class ttt {
 			System.out.println("Cats game");
 	}
 
+	/**
+	 * 
+	 * this takes in the board and the current player and runs it through checks to see if there is a winner
+	 * if there is it returns player otherwise it returns -1
+	 * 
+	 * @param board a 2d array of chars to represent a tic tac toe board
+	 * @param player the current player
+	 * @return player or -1
+	 */
 	private static int checkWinner(char[][] board, int player) {
 		String line = "";
 		for (int i = 0; i < 8; i++) {
@@ -59,62 +80,12 @@ public class ttt {
 		return -1;
 	}
 
-//	private static void makeMove(char[][] board, int player) {
-//		Scanner input = new Scanner(System.in);
-//		int row = -1;
-//		int col = -1;
-//		char marker = 'X';
-//		if (player == 2)
-//			marker = 'O';
-//		
-//		int place = -1;
-//		while (place < 1 || place > 9) { //makes sure they choose 1-9
-//			System.out.println("Player " + player + " enter the number where you want to place your marker");
-//			place = input.nextInt();
-//		}
-//		switch(place) {
-//		case 1:
-//			row = 0;
-//			col = 0;
-//		case 2:
-//			row = 0;
-//			col = 1;
-//			break;
-//		case 3:
-//			row = 0;
-//			col = 2;
-//		case 4:
-//			row = 1;
-//			col = 0;
-//			break;
-//		case 5:
-//			row = 1;
-//			col = 1;
-//		case 6:
-//			row = 1;
-//			col = 2;
-//			break;
-//		case 7:
-//			row = 2;
-//			col = 0;
-//		case 8:
-//			row = 2;
-//			col = 1;
-//			break;
-//		case 9:
-//			row = 2;
-//			col = 2;
-//			break;
-//		}
-//		while (!Character.isDigit(board[row][col]))// makes sure spot isnt being used
-//		{
-//			System.out.println("Player " + player + " enter the number where you want to place your marker");
-//			place = input.nextInt();
-//		}
-//		board[row][col] = marker;
-//
-//	}
-//
+	/**
+	 * This method is what allows each player to place their tic on the board
+	 * 
+	 * @param board a 2d array of chars to represent a tic tac toe board
+	 * @param player the current player
+	 */
 	private static void makeMove(char[][] board, int player) {
 		Scanner input = new Scanner(System.in);
 		int row, col, place;
@@ -148,6 +119,11 @@ public class ttt {
 		}
 	}
 
+	/**
+	 * THis method draws the board that the characters will be placed on
+	 * 
+	 * @param board a 2d array of chars to represent a tic tac toe board
+	 */
 	private static void drawBoard(char[][] board) {
 		int index = 0;
 		for (int i = 0; i < 3; i++)// rows
@@ -166,6 +142,11 @@ public class ttt {
 		}
 	}
 
+	/**
+	 * Allows the board to be filled
+	 * 
+	 * @param board a 2d array of chars to represent a tic tac toe board
+	 */
 	private static void fillBoard(char[][] board) {
 		char ch = '1';
 		for (int i = 0; i < 3; i++) {

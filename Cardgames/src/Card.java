@@ -1,4 +1,8 @@
-
+/**
+ * this is the card class. it creates a playing card with a suit and a rank.
+ * @author syd
+ * @since 4/22/26
+ */
 public class Card {
 	private final int suit;
 	private final int rank;
@@ -12,10 +16,22 @@ public class Card {
 		this.suit = suit;
 	}
 
+	/**
+	 * checks to see if one cards equals another
+	 * 
+	 * @param that || your card
+	 * @return suit and rank
+	 */
 	public boolean equals(Card that) {
 		return this.suit == that.suit && this.rank == that.rank;
 	}
 
+	/**
+	 * compares your card to your opponents 
+	 * 
+	 * @param that || your card
+	 * @return  
+	 */
 	public int compareTo(Card that) {
 		if (this.suit < that.suit)
 			return -1;
@@ -28,14 +44,25 @@ public class Card {
 		return 0;
 	}
 
+	/**
+	 * 
+	 * @return the suit of your card
+	 */
 	public int getSuit() {
 		return suit;
 	}
 
+	/**
+	 *
+	 * @returnn the rank of your card
+	 */
 	public int getRank() {
 		return rank;
 	}
 
+	/**
+	 *returns the suit and rank of a given card in a printable format
+	 */
 	public String toString() {
 		return RANKS[this.rank] + " of " + SUITS[this.suit];
 	}
