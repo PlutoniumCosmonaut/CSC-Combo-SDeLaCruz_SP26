@@ -1,18 +1,27 @@
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class CSclasses {
+	
+	public static myfilewriter fw = new myfilewriter("courses.txt");
 
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
+		
+		myfilereader reader = new myfilereader("courses.txt");
+		
 		ArrayList<Course> courseList = new ArrayList<>();
 
 		Course course;
 		String another = "yes";
 		
+		File file = fw.getFile();
+		
 		while(another.charAt(0) == 'y')
 		{
-			System.out.println("What type of course is it? 1 = In-Person, 2 = RTR, 3 = Full online");
+			System.out.println("What type of course is it? 1 = In-Person, 2 = RTR, 3 = Full online. T ype 4 to quit out");
 			int type = input.nextInt();
+			if(type==4)break;
 			System.out.println("what is the course number?");
 			String coursenum = input.next();
 			System.out.println("How many students are in the class");
@@ -35,6 +44,7 @@ public class CSclasses {
 				course = new FullRemoteCourse(coursenum, numStudents, maxStudents, credits, email);
 			}
 			courseList.add(course);
+			addToFile(file, course);
 			System.out.println("Do you need to enter another?");
 			another = input.next();
 			another = another.toLowerCase();
@@ -45,6 +55,32 @@ public class CSclasses {
 		print(course1);
 	}
 }
+	private static void addToFile(File file, Course course) 
+	{
+		if(course instanceof InPersonCourse)
+		{
+			fw.appendToFile(file, "IP ");
+			InPersonCourse ipcourse = (InPersonCourse) course;
+			fw.appendToFile(file, ipcourse.getRoomnum() + " ");
+		}else if(course instanceof FullRemoteCourse)
+		{
+			fw.appendToFile(file, "FR ");
+			FullRemoteCourse ipcourse = (FullRemoteCourse) course;
+			fw.appendToFile(file, ipcourse.getEmail() + " ");
+		}else if(course instanceof RealTimeRemoteCourse)
+		{
+			fw.appendToFile(file, "RTR ");
+			RealTimeRemoteCourse ipcourse = (RealTimeRemoteCourse) course;
+			fw.appendToFile(file, ipcourse.getZoom() + " ");
+		}
+		
+		fw.appendToFile(file, course.getStr() + " ");
+		fw.appendToFile(file, course.getNumStudents() + " ");
+		fw.appendToFile(file, course.getMaxStudents() + " ");
+		fw.appendToFile(file, course.getCredits() + "\n");
+	}
+	
+	
 	public static void print(Course course)
 	{
 		 System.out.println(course);
